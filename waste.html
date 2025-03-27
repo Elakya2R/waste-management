@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stylish Types of Waste</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(120deg, #f0f8ff, #c3e6cb);
+            color: #333;
+        }
+        .waste-section {
+            padding: 80px 0;
+        }
+        .waste-title {
+            text-align: center;
+            font-size: 2.5rem;
+            font-weight: bold;
+            color: #28a745;
+            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
+            margin-bottom: 30px;
+        }
+        .waste-card {
+            border: none;
+            border-radius: 15px;
+            padding: 25px;
+            text-align: center;
+            color: white;
+            position: relative;
+            overflow: hidden;
+            transition: transform 0.3s, box-shadow 0.3s;
+            cursor: pointer;
+        }
+        .waste-card:hover {
+            transform: scale(1.05);
+            box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.3);
+        }
+        .waste-card .icon {
+            font-size: 60px;
+            margin-bottom: 15px;
+            transition: transform 0.3s;
+        }
+        .waste-card:hover .icon {
+            transform: rotate(10deg) scale(1.2);
+        }
+        
+        .bio { background: #28a745; }
+        .recycle { background: #17a2b8; }
+        .hazard { background: #dc3545; }
+        .ewaste { background: #6610f2; }
+        .construction { background: #fd7e14; }
+        .biomedical { background: #6c757d; }
+    </style>
+</head>
+<body>
+    
+     <nav class="navbar navbar-expand-lg navbar-dark bg-success">
+        <div class="container">
+            <a class="navbar-brand" href="#">Waste Management</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="waste.html">Waste</a></li>
+                    <li class="nav-item"><a class="nav-link" href="contact.html">Contact us</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <section class="waste-section container">
+        <h2 class="waste-title">Types of Waste</h2>
+        <div class="row g-4">
+            <div class="col-md-4">
+                <div class="waste-card bio" onclick="showLocation('Biodegradable Waste', 'https://maps.google.com/?q=waste+disposal+site')">
+                    <div class="icon">🍎</div>
+                    <h5>Biodegradable Waste</h5>
+                    <p>Food scraps, paper, garden waste.</p>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="waste-card recycle" onclick="showLocation('Recyclable Waste', 'https://maps.google.com/?q=recycling+center')">
+                    <div class="icon">🔄</div>
+                    <h5>Recyclable Waste</h5>
+                    <p>Paper, plastic, glass, metal cans.</p>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="waste-card hazard" onclick="showLocation('Hazardous Waste', 'https://maps.google.com/?q=hazardous+waste+disposal')">
+                    <div class="icon">☣️</div>
+                    <h5>Hazardous Waste</h5>
+                    <p>Batteries, chemicals, medical waste.</p>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="waste-card ewaste" onclick="showLocation('E-Waste', 'https://maps.google.com/?q=e-waste+recycling')">
+                    <div class="icon">💻</div>
+                    <h5>E-Waste</h5>
+                    <p>Old electronics, cables, phones.</p>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="waste-card construction" onclick="showLocation('Construction Waste', 'https://maps.google.com/?q=construction+waste+disposal')">
+                    <div class="icon">🏗️</div>
+                    <h5>Construction Waste</h5>
+                    <p>Bricks, wood, metal scraps.</p>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="waste-card biomedical" onclick="showLocation('Biomedical Waste', 'https://maps.google.com/?q=biomedical+waste+disposal')">
+                    <div class="icon">🏥</div>
+                    <h5>Biomedical Waste</h5>
+                    <p>Used syringes, bandages, medical waste.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    
+    <div class="modal fade" id="locationModal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header bg-success text-white">
+                    <h5 class="modal-title" id="modalTitle">Waste Disposal Location</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body text-center">
+                    <p id="modalDescription"></p>
+                    <a id="modalLink" href="#" target="_blank" class="btn btn-primary">View on Google Maps</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function showLocation(title, mapLink) {
+            document.getElementById("modalTitle").innerText = title;
+            document.getElementById("modalDescription").innerText = `Find the nearest ${title} disposal center.`;
+            document.getElementById("modalLink").href = mapLink;
+            var locationModal = new bootstrap.Modal(document.getElementById('locationModal'));
+            locationModal.show();
+        }
+    </script>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+</body>
+</html>
